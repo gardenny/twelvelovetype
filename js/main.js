@@ -32,3 +32,24 @@ function startTest() {
     goNext(qIndex);
   }, 400);
 }
+
+function goNext(qIndex) {
+  if (qIndex === endPoint) {
+    statusBar.style.width = '100%';
+    progressCount.innerText = '결과 분석 중...';
+    questionBox.innerText = '나의 연애 유형에 맞는 동물을 찾았어요! ';
+    resultBtn.style.opacity = 1;
+    resultBtn.style.pointerEvents = 'auto';
+    resultBtn.addEventListener('click', goResult);
+    return;
+  }
+
+  questionBox.innerText = `Q. ${qnaList[qIndex].q}`; // 질문 리스트
+  for (let i in qnaList[qIndex].a) {
+    const answer = qnaList[qIndex].a[i].answer; // 답변 리스트
+    chooseAnswer(answer, qIndex, i); // 답변 리스트와 질문 순서 함께 전달
+  }
+  // 진행도 구하기
+  statusBar.style.width = `${(100 / endPoint) * qIndex}%`;
+  progressCount.innerText = `${qIndex + 1}/12`;
+}
