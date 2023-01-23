@@ -53,3 +53,27 @@ function goNext(qIndex) {
   statusBar.style.width = `${(100 / endPoint) * qIndex}%`;
   progressCount.innerText = `${qIndex + 1}/12`;
 }
+
+function chooseAnswer(answer, qIndex, aIndex) {
+  const answerBox = document.querySelector('.answer-box');
+  const answerBtn = document.createElement('button');
+  answerBtn.classList.add('answer-list', 'mt-3', 'p-3');
+  answerBox.appendChild(answerBtn); // 답변 리스트 동적 생성
+  answerBtn.innerText = answer; // 답변 리스트 삽입
+
+  answerBtn.addEventListener('click', () => {
+    const childrens = document.querySelectorAll('.answer-list');
+    childrens.forEach(children => {
+      children.disabled = true;
+      children.style.WebkitAnimation = 'fadeOut 500ms';
+      children.style.animation = 'fadeOut 500ms';
+    });
+    setTimeout(() => {
+      // 사용자가 선택한 답변의 type count 1씩 증가
+      const type = qnaList[qIndex].a[aIndex].type;
+      for (let i = 0; i < type.length; i++) selected[type[i]] += 1;
+      childrens.forEach(children => children.remove());
+      goNext(++qIndex); // 다음 질문 전달
+    }, 450);
+  });
+}
