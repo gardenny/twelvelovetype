@@ -77,3 +77,41 @@ function chooseAnswer(answer, qIndex, aIndex) {
     }, 450);
   });
 }
+
+function setResult() {
+  let point = calcResult(); // 최종적으로 계산되어져 나온 type의 index값
+  const resultName = document.querySelector('.result-name');
+  const resultImg = document.querySelector('.result-img');
+  const resultDesc = document.querySelector('.result-description');
+
+  resultName.innerText = infoList[point].name;
+  resultImg.setAttribute(`src`, `img/image-${point}.png`);
+  resultImg.setAttribute(`alt`, point);
+  resultDesc.innerText = infoList[point].desc;
+}
+
+function goResult() {
+  qna.style.WebkitAnimation = 'fadeOut 1000ms';
+  qna.style.animation = 'fadeOut 1000ms';
+  setTimeout(() => {
+    result.style.WebkitAnimation = 'fadeIn 1000ms';
+    result.style.animation = 'fadeIn 1000ms';
+    setTimeout(() => {
+      qna.style.display = 'none';
+      result.style.display = 'block';
+    }, 450);
+  });
+  setResult();
+}
+
+function calcResult() {
+  // 받아온 selected 배열에서 최대값을 가지고 있는 아이템의 index를 변수에 할당
+  const typeResult = selected.indexOf(Math.max(...selected));
+  return typeResult;
+}
+
+startBtn.addEventListener('click', startTest);
+shareBtn.addEventListener('click', setShare);
+retryBtn.addEventListener('click', () => {
+  location.href = 'https://imjone.github.io/twelvelovetype/';
+});
