@@ -2,7 +2,7 @@
 
 # 💗 Twelve love type
 
-12가지 연애 유형 심리 테스트 사이트 👉 [Demo](https://imjone.github.io/twelvelovetype/)
+12가지 연애 유형 심리 테스트 사이트 👉 [Demo](https://gardenny.github.io/twelvelovetype/)
 
 <br />
 
@@ -38,7 +38,7 @@
 
 ## 💻 소스 코드
 
-전체 코드 보러 가기 👉 [Notion](https://imjone.notion.site/Twelve-love-type-1889c7cd3b084a5ba8196bf05de98ffb)
+전체 코드 보러 가기 👉 [Notion](https://imjone.notion.site/Twelve-love-type-1889c7cd3b084a5ba8196bf05de98ffb?pvs=4)
 
 ### 📍 질문 제공하기
 
